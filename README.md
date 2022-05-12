@@ -9,7 +9,7 @@ Component | Code | Installation | Version
 ----------|-----------|------|--------
 Airbyte CDK | [faros-airbyte-cdk](faros-airbyte-cdk) | `npm i faros-airbyte-cdk` |[![npm package](https://img.shields.io/npm/v/faros-airbyte-cdk?color=blue&label=npm)](https://www.npmjs.com/package/faros-airbyte-cdk)
 Faros Destination | [destinations/airbyte-faros-destination](destinations/airbyte-faros-destination) | `npm i airbyte-faros-destination` or `docker pull farosai/airbyte-faros-destination` | [![npm package](https://img.shields.io/npm/v/airbyte-faros-destination?color=blue&label=npm)](https://www.npmjs.com/package/airbyte-faros-destination) [![](https://img.shields.io/docker/v/farosai/airbyte-faros-destination?color=blue&label=docker)](https://hub.docker.com/r/farosai/airbyte-faros-destination/tags)
-Web3 Analytics Source | [sources/airbyte-web3analytics-source](sources/airbyte-web3analytics-source) | `docker pull web3analytics/airbyte-web3analytics-source` | [![](https://img.shields.io/docker/v/web3analytics/airbyte-web3analytics-source?color=blue&label=docker)](https://hub.docker.com/r/web3analytics/airbyte-web3analytics-source/tags)
+Web3 Analytics Source | [sources/airbyte-web3analytics-source](sources/web3analytics-source) | `docker pull web3analytics/airbyte-web3analytics-source` | [![](https://img.shields.io/docker/v/web3analytics/airbyte-web3analytics-source?color=blue&label=docker)](https://hub.docker.com/r/web3analytics/airbyte-web3analytics-source/tags)
 
 # Development
 
