@@ -149,20 +149,18 @@ export class Web3Analytics {
     if (!res) return;
 
     for await (const item of res.events) {
-      //console.log(item);
+      console.log(item.updated_at);
 
-      //TODO: add timestamp to events list so we only load items since lastUpdatedAt
-      const doc = await TileDocument.load(this.ceramic, item.id);
-      //console.log(doc.content);
-
-      const docTs = doc.content['meta']['ts'];
       const startTime = new Date(lastUpdatedAt ?? 0);
-      if (docTs > startTime) {
+      if (item.updated_at > startTime) {
+        //TODO: batch these requests to improve performance
+        const doc = await TileDocument.load(this.ceramic, item.id);
+        console.log(doc.content);
         yield {
           did: did,
           id: item.id,
           content: doc.content,
-          updated_at: docTs,
+          updated_at: item.updated_at,
         } as any;
       }
     }
