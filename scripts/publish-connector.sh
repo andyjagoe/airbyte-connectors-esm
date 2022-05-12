@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
 fi
 connector_path=$1
 
-org="farosai"
+org="web3analytics"
 connector_name="$(echo $connector_path | cut -f2 -d'/')"
 prefix="airbyte-"
 if [[ "$connector_name" = $prefix* ]]; then
@@ -15,7 +15,7 @@ else
 fi
 
 latest_tag="$image:latest"
-connector_version=$(jq -r '.version' < ${connector_path}package.json)
+connector_version=$(jq -r '.version' < ${connector_path}/package.json)
 version_tag="$image:$connector_version"
 echo "Image version tag: $version_tag"
 
