@@ -1,7 +1,6 @@
 # Airbyte Connectors (ESM)
 
 
-
 This repository is an ESM version of [https://github.com/faros-ai/airbyte-connectors](https://github.com/faros-ai/airbyte-connectors), which is written in CommonJS. If you want to build a source connector that needs to import [pure ESM packages](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c), you need something like this. [Learn more](https://blog.sindresorhus.com/get-ready-for-esm-aa53530b3f77). 
 
 See the READMEs inside `destinations/` and `sources/` subfolders for more information.
@@ -10,6 +9,7 @@ Component | Code | Installation | Version
 ----------|-----------|------|--------
 Airbyte CDK | [faros-airbyte-cdk](faros-airbyte-cdk) | `npm i faros-airbyte-cdk` |[![npm package](https://img.shields.io/npm/v/faros-airbyte-cdk?color=blue&label=npm)](https://www.npmjs.com/package/faros-airbyte-cdk)
 Faros Destination | [destinations/airbyte-faros-destination](destinations/airbyte-faros-destination) | `npm i airbyte-faros-destination` or `docker pull farosai/airbyte-faros-destination` | [![npm package](https://img.shields.io/npm/v/airbyte-faros-destination?color=blue&label=npm)](https://www.npmjs.com/package/airbyte-faros-destination) [![](https://img.shields.io/docker/v/farosai/airbyte-faros-destination?color=blue&label=docker)](https://hub.docker.com/r/farosai/airbyte-faros-destination/tags)
+Web3 Analytics Source | [sources/airbyte-web3analytics-source](sources/airbyte-web3analytics-source) | `docker pull web3analytics/airbyte-web3analytics-source` | [![](https://img.shields.io/docker/v/web3analytics/airbyte-web3analytics-source?color=blue&label=docker)](https://hub.docker.com/r/web3analytics/airbyte-web3analytics-source/tags)
 
 # Development
 
