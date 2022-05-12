@@ -72,6 +72,7 @@ export class Web3Analytics {
 
   async checkConnection(): Promise<void> {
     try {
+      //TODO: add check for Ceramic as well
       const network = await this.provider.getNetwork();
       const chainId = network.chainId;
     } catch (err: any) {

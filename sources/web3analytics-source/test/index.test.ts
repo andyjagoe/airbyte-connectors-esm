@@ -41,10 +41,6 @@ describe('index', () => {
     return JSON.parse(fs.readFileSync(`resources/${fileName}`, 'utf8'));
   }
 
-  function readTestResourceFile(fileName: string): any {
-    return JSON.parse(fs.readFileSync(`test_files/${fileName}`, 'utf8'));
-  }
-
   test('spec', async () => {
     const source = new sut.Web3AnalyticsSource(logger);
     await expect(source.spec()).resolves.toStrictEqual(

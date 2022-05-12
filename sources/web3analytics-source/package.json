@@ -24,7 +24,7 @@
     "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
     "prepare": "npm run build",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --verbose --color",
-    "test-cov": "jest --coverage --verbose --color",
+    "test-cov": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --verbose --color",
     "watch": "tsc -b -w src test"
   },
   "dependencies": {

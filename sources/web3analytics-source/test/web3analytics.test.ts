@@ -25,7 +25,7 @@ describe('web3analytics', () => {
   );
 
   test('verify we can get app IDs from blockchain', async () => {
-    //TODO: mock this test
+    //TODO: mock this test and check for correctness
     const web3analytics = await Web3Analytics.instance(validConfig, logger);
     await expect(web3analytics.getAppIds()).resolves.toStrictEqual([
       '0xE6d24e69A35944FD15EF2948cA8E07067BD5d57a',
@@ -33,18 +33,50 @@ describe('web3analytics', () => {
   });
 
   test('verify we can get list of user registrations for an app', async () => {
-    //TODO: mock this test
+    //TODO: mock this test and check for correctness
     const web3analytics = await Web3Analytics.instance(validConfig, logger);
     const appId = '0xE6d24e69A35944FD15EF2948cA8E07067BD5d57a';
     const users = await web3analytics.getUserRegistrations(appId);
     //console.log(users);
   });
 
+  test('confirm we can verify user registrations', async () => {
+    const web3analytics = await Web3Analytics.instance(validConfig, logger);
+    const did1 = 'did:key:zQ3shfzGsUyywyxz8U94iA32ifEj29VpzctY6NLTzGdjAAaQx';
+    const address1 = '0xF97eba606Fe1b1A6b6CCab76209A8BCf136C8769';
+    const address2 = '0xcA64788809ae2EfDeaC73A7aa88a12Aa3aDDeE53';
+    const fakeAddress = '0xcA64788809ae2EfDeaC73A7aa88a12Aa3aDDeE52';
+    expect(web3analytics.verifyRegistration(did1, address1));
+    expect(!web3analytics.verifyRegistration(did1, address2));
+    expect(!web3analytics.verifyRegistration(null, null));
+    expect(!web3analytics.verifyRegistration(did1, fakeAddress));
+  });
+
   test('verify we can get tracking data for user from ceramic', async () => {
-    //TODO: mock this test
+    //TODO: mock this test and check for correctness
     const web3analytics = await Web3Analytics.instance(validConfig, logger);
     const did = 'did:key:zQ3shp4NdGw9GvSLrCw9LRLC5nCVpXtp5Jc9UETVauUvTYGKf';
     const events = await web3analytics.getTrackingEvents(did);
     //console.log(events);
+  });
+
+  test('verify we can get tracking data for apps', async () => {
+    //TODO: mock this test and check for correctness
+    const web3analytics = await Web3Analytics.instance(validConfig, logger);
+
+    const allEvents = await web3analytics.getEvents();
+    let i = 0;
+    for await (const item of allEvents) {
+      i++;
+    }
+    expect(i > 0);
+
+    // Test starting with a date in the year 2037
+    const noEvents = await web3analytics.getEvents('2125792707');
+    i = 0;
+    for await (const item of noEvents) {
+      i++;
+    }
+    expect(i === 0);
   });
 });
