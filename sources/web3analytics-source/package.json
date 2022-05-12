@@ -1,0 +1,68 @@
+{
+  "name": "web3analytics-source",
+  "version": "0.1.0",
+  "description": "Web3 Analytics Airbyte Source",
+  "keywords": [
+    "airbyte",
+    "source",
+    "web3"
+  ],
+  "author": "Andy Jagoe",
+  "license": "Apache-2.0",
+  "files": [
+    "lib/",
+    "resources/"
+  ],
+  "engines": {
+    "node": ">=14.5"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p src",
+    "clean": "rm -rf lib node_modules out",
+    "fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts' && npm run lint -- --fix",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "prepare": "npm run build",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --verbose --color",
+    "test-cov": "jest --coverage --verbose --color",
+    "watch": "tsc -b -w src test"
+  },
+  "dependencies": {
+    "@ceramicnetwork/http-client": "^2.0.0",
+    "@glazed/datamodel": "^0.3.0",
+    "@glazed/did-datastore": "^0.3.0",
+    "@glazed/tile-loader": "^0.2.0",
+    "@openagenda/verror": "^3.0.0",
+    "dotenv": "^16.0.1",
+    "ethers": "^5.6.5",
+    "faros-airbyte-cdk": "^0.1.74",
+    "uint8arrays": "^3.0.0"
+  },
+  "jest": {
+    "coverageDirectory": "out/coverage",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/test/"
+    ],
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "preset": "ts-jest/presets/default-esm",
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      ".d.ts",
+      ".js"
+    ],
+    "testTimeout": 20000,
+    "transform": {},
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "test/tsconfig.json",
+        "useESM": true
+      }
+    }
+  }
+}

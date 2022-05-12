@@ -1,0 +1,28 @@
+{
+  "documentationUrl": "https://github.com/andyjagoe/web3-analytics-core",
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Web3 Analytics Spec",
+    "type": "object",
+    "required": [
+      "node_url",
+      "ceramic_url",
+      "web3analytics_address"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "node_url": {
+        "type": "string",
+        "title": "Node URL (HTTP)"
+      },
+      "ceramic_url": {
+        "type": "string",
+        "title": "Ceramic API URL"
+      },
+      "web3analytics_address": {
+        "type": "string",
+        "title": "Main Web3 Analytics Contract Address"
+      }
+    }
+  }
+}

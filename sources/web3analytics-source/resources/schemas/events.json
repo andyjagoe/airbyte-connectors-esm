@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Event",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "integer"
+      },
+      "anonymousId": {
+        "type": "string",
+        "title": "anonymousId"
+      },
+      "event": {
+        "type": "string",
+        "title": "event"
+      },
+      "meta": {
+        "type": "object",
+        "title": "meta"
+      },
+      "options": {
+          "type": "object",
+          "title": "options"
+        },
+      "properties": {
+          "type": "object",
+          "title": "properties"
+      },
+      "type": {
+          "type": "string",
+          "title": "type"
+        },
+      "userId": {
+          "type": [ "string", "null" ],
+          "title": "userId"
+      }    
+    }
+}
