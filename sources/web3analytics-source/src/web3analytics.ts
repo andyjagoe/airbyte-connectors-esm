@@ -157,12 +157,7 @@ export class Web3Analytics {
         //TODO: batch these requests to improve performance
         const doc = await TileDocument.load(this.ceramic, item.id);
         console.log(doc.content);
-        yield {
-          did: did,
-          id: item.id,
-          content: doc.content,
-          updated_at: item.updated_at,
-        } as any;
+        yield doc.content as any;
       }
     }
   }

@@ -6,6 +6,9 @@
       "id": {
         "type": "string"
       },
+      "did": {
+        "type": "string"
+      },
       "updated_at": {
         "type": "integer"
       },
