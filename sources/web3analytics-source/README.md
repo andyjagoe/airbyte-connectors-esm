@@ -18,6 +18,8 @@ You must publish a new source connector to Docker before you can use it. To do t
 
 ```./scripts/publish-connector.sh sources/web3analytics-source```
 
+This compiles a docker build using the platform you're publishing from since we have not set up dual architecture buidls yet. To build for AMD64, publish from an AMD64 machine. To build for arm64, publish from an arm64 machine.
+
 ## Use
 
 To use your source connector, add a new connector and add the values from the Docker container, e.g. [https://hub.docker.com/r/web3analytics/airbyte-web3analytics-source/tags](https://hub.docker.com/r/web3analytics/airbyte-web3analytics-source/tags)
