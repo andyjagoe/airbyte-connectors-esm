@@ -50,13 +50,13 @@ export class Web3Analytics {
 
     const ceramic = await new CeramicClient(config.ceramic_url);
     const cache = new Map();
-    const loader = await new TileLoader({ceramic, cache});
+    const loader = await new TileLoader({ceramic, cache} as any);
     const aliases = fs.readJSONSync(
       path.resolve(__dirname, '../resources/schemas/model.json')
     );
     type Params = DataModelParams<typeof aliases>;
     const model = await new DataModel({loader, aliases} as unknown as Params);
-    const dataStore = await new DIDDataStore({ceramic, loader, model});
+    const dataStore = await new DIDDataStore({ceramic, loader, model} as any);
 
     const provider = new ethers.providers.JsonRpcProvider(config.node_url);
 
@@ -155,7 +155,7 @@ export class Web3Analytics {
       const startTime = new Date(lastUpdatedAt ?? 0);
       if (item.updated_at > startTime) {
         //TODO: batch these requests to improve performance
-        const doc = await TileDocument.load(this.ceramic, item.id);
+        const doc = await TileDocument.load(this.ceramic as any, item.id);
         console.log(doc.content);
         yield doc.content as any;
       }
