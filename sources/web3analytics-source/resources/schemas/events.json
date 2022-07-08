@@ -6,6 +6,10 @@
       "id": {
         "type": "string"
       },
+      "appId": {
+        "type": "string",
+        "title": "appId"
+      },  
       "did": {
         "type": "string"
       },
@@ -20,61 +24,43 @@
         "type": "string",
         "title": "event"
       },
-      "meta": {
-        "type": "object",
-        "title": "meta",
-        "properties": {
-          "ts": {
-            "type": "integer"
-          },
-          "rid": {
-            "type": "string"
-          }
-        }  
+      "meta.ts": {
+        "type": "integer"
       },
+      "meta.rid": {
+        "type": "string"
+      },  
       "options": {
           "type": "object",
           "title": "options"
         },
-      "properties": {
-          "type": "object",
-          "title": "properties",
-          "properties": {
-            "url": {
-              "type": "string"
-            },
-            "hash": {
-              "type": "string"
-            },
-            "path": {
-              "type": "string"
-            },
-            "title": {
-              "type": "string"
-            },
-            "width": {
-              "type": "integer"
-            },
-            "height": {
-              "type": "integer"
-            },
-            "search": {
-              "type": "string"
-            },
-            "referrer": {
-              "type": "string"
-            }
-          }  
+      "properties.url": {
+        "type": "string"
       },
-      "traits": {
-        "type": "object",
-        "title": "traits",
-        "properties": {
-          "email": {
-            "type": "string"
-          }
-        }
-      },  
+      "properties.hash": {
+        "type": "string"
+      },
+      "properties.path": {
+        "type": "string"
+      },
+      "properties.title": {
+        "type": "string"
+      },
+      "properties.width": {
+        "type": "integer"
+      },
+      "properties.height": {
+        "type": "integer"
+      },
+      "properties.search": {
+        "type": "string"
+      },
+      "properties.referrer": {
+        "type": "string"
+      },
+      "traits.email": {
+        "type": "string"
+      },    
       "type": {
           "type": "string",
           "title": "type"
