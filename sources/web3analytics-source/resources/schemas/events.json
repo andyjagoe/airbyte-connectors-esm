@@ -6,12 +6,18 @@
       "id": {
         "type": "string"
       },
-      "appId": {
+      "app_id": {
         "type": "string",
-        "title": "appId"
+        "title": "app_id"
       },  
       "did": {
         "type": "string"
+      },
+      "raw_payload": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "integer"
       },
       "updated_at": {
         "type": "integer"
@@ -24,41 +30,41 @@
         "type": "string",
         "title": "event"
       },
-      "meta.ts": {
+      "meta_ts": {
         "type": "integer"
       },
-      "meta.rid": {
+      "meta_rid": {
         "type": "string"
       },  
       "options": {
           "type": "object",
           "title": "options"
         },
-      "properties.url": {
+      "properties_url": {
         "type": "string"
       },
-      "properties.hash": {
+      "properties_hash": {
         "type": "string"
       },
-      "properties.path": {
+      "properties_path": {
         "type": "string"
       },
-      "properties.title": {
+      "properties_title": {
         "type": "string"
       },
-      "properties.width": {
+      "properties_width": {
         "type": "integer"
       },
-      "properties.height": {
+      "properties_height": {
         "type": "integer"
       },
-      "properties.search": {
+      "properties_search": {
         "type": "string"
       },
-      "properties.referrer": {
+      "properties_referrer": {
         "type": "string"
       },
-      "traits.email": {
+      "traits_email": {
         "type": "string"
       },    
       "type": {
