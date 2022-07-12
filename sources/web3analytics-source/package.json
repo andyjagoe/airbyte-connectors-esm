@@ -1,6 +1,6 @@
 {
   "name": "web3analytics-source",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Web3 Analytics Airbyte Source",
   "keywords": [
     "airbyte",

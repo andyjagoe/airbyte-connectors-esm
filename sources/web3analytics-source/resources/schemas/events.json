@@ -17,10 +17,13 @@
         "type": "string"
       },
       "created_at": {
-        "type": "integer"
+        "type": "string", 
+        "format": "date-time", 
+        "airbyte_type": "timestamp_with_timezone"
       },
       "updated_at": {
-        "type": "integer"
+        "type": "integer", 
+        "title": "updated_at"
       },
       "anonymousId": {
         "type": "string",
@@ -31,7 +34,8 @@
         "title": "event"
       },
       "meta_ts": {
-        "type": "integer"
+        "type": "string", 
+        "airbyte_type": "big_integer"
       },
       "meta_rid": {
         "type": "string"
