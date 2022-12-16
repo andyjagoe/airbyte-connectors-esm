@@ -56,7 +56,7 @@
       ".d.ts",
       ".js"
     ],
-    "testTimeout": 20000,
+    "testTimeout": 600000,
     "transform": {},
     "globals": {
       "ts-jest": {

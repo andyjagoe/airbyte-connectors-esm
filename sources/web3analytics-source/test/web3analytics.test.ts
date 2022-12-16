@@ -27,9 +27,9 @@ describe('web3analytics', () => {
   test('verify we can get app IDs from blockchain', async () => {
     //TODO: mock this test and check for correctness
     const web3analytics = await Web3Analytics.instance(validConfig, logger);
-    await expect(web3analytics.getAppIds()).resolves.toStrictEqual([
-      '0xE6d24e69A35944FD15EF2948cA8E07067BD5d57a',
-    ]);
+    await expect(web3analytics.getAppIds()).resolves.toContain(
+      '0xE6d24e69A35944FD15EF2948cA8E07067BD5d57a'
+    );
   });
 
   test('verify we can get list of user registrations for an app', async () => {
