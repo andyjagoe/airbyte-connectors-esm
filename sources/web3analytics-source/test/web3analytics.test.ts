@@ -42,7 +42,8 @@ describe('web3analytics', () => {
 
   test('confirm we can verify user registrations', async () => {
     const web3analytics = await Web3Analytics.instance(validConfig, logger);
-    const did1 = 'did:key:zQ3shfzGsUyywyxz8U94iA32ifEj29VpzctY6NLTzGdjAAaQx';
+    //const did1 = 'did:key:zQ3shfzGsUyywyxz8U94iA32ifEj29VpzctY6NLTzGdjAAaQx';
+    const did1 = 'did:key:zQ3shmsF7BxJ4tjLqgdAVaGkKNeE1UttrYgLA2tRqpmYqzCxr';
     const address1 = '0xF97eba606Fe1b1A6b6CCab76209A8BCf136C8769';
     const address2 = '0xcA64788809ae2EfDeaC73A7aa88a12Aa3aDDeE53';
     const fakeAddress = '0xcA64788809ae2EfDeaC73A7aa88a12Aa3aDDeE52';
@@ -55,7 +56,7 @@ describe('web3analytics', () => {
   test('verify we can get tracking data for user from ceramic', async () => {
     //TODO: mock this test and check for correctness
     const web3analytics = await Web3Analytics.instance(validConfig, logger);
-    const did = 'did:key:zQ3shp4NdGw9GvSLrCw9LRLC5nCVpXtp5Jc9UETVauUvTYGKf';
+    const did = 'did:key:zQ3shmsF7BxJ4tjLqgdAVaGkKNeE1UttrYgLA2tRqpmYqzCxr';
     const events = await web3analytics.getTrackingEvents(did);
     //console.log(events);
   });

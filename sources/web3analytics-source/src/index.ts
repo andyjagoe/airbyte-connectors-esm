@@ -33,6 +33,7 @@ export class Web3AnalyticsSource extends AirbyteSourceBase {
     try {
       const web3analytics = await Web3Analytics.instance(config, this.logger);
       await web3analytics.checkConnection();
+      console.log('checkConnection');
     } catch (err: any) {
       return [false, err];
     }

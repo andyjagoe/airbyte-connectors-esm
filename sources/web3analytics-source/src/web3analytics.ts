@@ -1,8 +1,4 @@
-import {CeramicClient} from '@ceramicnetwork/http-client';
-import {TileDocument} from '@ceramicnetwork/stream-tile';
-import {DataModel, DataModelParams} from '@glazed/datamodel';
-import {DIDDataStore} from '@glazed/did-datastore';
-import {TileLoader} from '@glazed/tile-loader';
+import {ComposeClient} from '@composedb/client';
 import VError from '@openagenda/verror';
 import {ethers} from 'ethers';
 import {AirbyteLogger, wrapApiError} from 'faros-airbyte-cdk';
@@ -10,6 +6,8 @@ import fs from 'fs-extra';
 import path from 'path';
 import * as u8a from 'uint8arrays';
 import * as url from 'url';
+
+import {definition} from '../resources/schemas/definition.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const web3AnalyticsABI = fs.readJSONSync(
@@ -26,8 +24,7 @@ export class Web3Analytics {
   private static web3analytics: Web3Analytics = null;
 
   constructor(
-    private readonly ceramic: CeramicClient,
-    private readonly dataStore: DIDDataStore,
+    private readonly composedb: ComposeClient,
     private readonly provider: ethers.providers.JsonRpcProvider,
     private readonly cfg: Web3AnalyticsConfig
   ) {}
@@ -48,24 +45,13 @@ export class Web3Analytics {
       throw new VError('No Web3 Analytics address provided');
     }
 
-    const ceramic = await new CeramicClient(config.ceramic_url);
-    const cache = new Map();
-    const loader = await new TileLoader({ceramic, cache} as any);
-    const aliases = fs.readJSONSync(
-      path.resolve(__dirname, '../resources/schemas/model.json')
-    );
-    type Params = DataModelParams<typeof aliases>;
-    const model = await new DataModel({loader, aliases} as unknown as Params);
-    const dataStore = await new DIDDataStore({ceramic, loader, model} as any);
-
+    const compose = new ComposeClient({
+      ceramic: config.ceramic_url,
+      definition,
+    });
     const provider = new ethers.providers.JsonRpcProvider(config.node_url);
 
-    Web3Analytics.web3analytics = new Web3Analytics(
-      ceramic,
-      dataStore,
-      provider,
-      config
-    );
+    Web3Analytics.web3analytics = new Web3Analytics(compose, provider, config);
     logger.debug('Created Web3Analytics instance');
     return Web3Analytics.web3analytics;
   }
@@ -146,18 +132,55 @@ export class Web3Analytics {
     did: string,
     lastUpdatedAt?: string
   ): AsyncGenerator<Event> {
-    const res = await this.dataStore.get('events', did);
-    if (!res) return;
+    const res: any = await this.composedb.executeQuery(`
+      query {
+        node (id: "${did}") {
+          id  
+          ... on CeramicAccount {
+            eventList(last:1000) {
+              edges {
+                node {
+                  id
+                  app_id
+                  did
+                  created_at
+                  updated_at
+                  raw_payload
+                  anonymousId
+                  event
+                  meta_ts
+                  meta_rid
+                  properties_url
+                  properties_hash
+                  properties_path
+                  properties_title
+                  properties_width
+                  properties_height
+                  properties_search
+                  properties_referrer
+                  traits_email
+                  type
+                  userId
+                }
+              }
+            }
+          }
+        }
+      }    
+    `);
+    //TODO: Handle paging
 
-    for await (const item of res.events) {
-      console.log(item.updated_at);
+    if (!res) return;
+    if (res.data.node.eventList.edges.length === 0) return;
+
+    for await (const {node} of res.data.node.eventList.edges) {
+      console.log(node.updated_at);
 
       const startTime = new Date(lastUpdatedAt ?? 0);
-      if (item.updated_at > startTime) {
+      if (node.updated_at > startTime) {
         //TODO: batch these requests to improve performance
-        const doc = await TileDocument.load(this.ceramic as any, item.id);
-        console.log(doc.content);
-        yield doc.content as any;
+        console.log(node);
+        yield node as any;
       }
     }
   }

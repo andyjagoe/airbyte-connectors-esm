@@ -40,10 +40,6 @@
       "meta_rid": {
         "type": "string"
       },  
-      "options": {
-          "type": "object",
-          "title": "options"
-        },
       "properties_url": {
         "type": "string"
       },
@@ -76,7 +72,7 @@
           "title": "type"
         },
       "userId": {
-          "type": [ "string", "null" ],
+          "type": "string",
           "title": "userId"
       }    
     }
