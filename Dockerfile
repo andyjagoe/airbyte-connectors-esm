@@ -1,8 +1,11 @@
 FROM node:14-alpine
-RUN apk add --no-cache coreutils
+RUN apk add --no-cache coreutils python3 py3-pip make g++
 
 WORKDIR /home/node/airbyte
-RUN npm install -g npm@7 lerna tsc ts-node
+RUN npm install -g npm@7
+RUN npm install -g lerna
+RUN npm install -g tsc
+RUN npm install -g ts-node
 
 COPY lerna.json .tsconfig.json package.json package-lock.json ./
 RUN sed -i "/jest\|mockttp/d" package.json
