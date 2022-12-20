@@ -1,6 +1,10 @@
 # Airbyte Connectors (ESM)
 
 
+## This repo has been replaced with [https://github.com/andyjagoe/airbyte-connectors](https://github.com/andyjagoe/airbyte-connectors) as of 12/22/2022 and is no longer in use.
+
+
+
 This repository is an ESM version of [https://github.com/faros-ai/airbyte-connectors](https://github.com/faros-ai/airbyte-connectors), which is written in CommonJS. If you want to build a source connector that needs to import [pure ESM packages](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c), you need something like this. [Learn more](https://blog.sindresorhus.com/get-ready-for-esm-aa53530b3f77). 
 
 See the READMEs inside `destinations/` and `sources/` subfolders for more information.
